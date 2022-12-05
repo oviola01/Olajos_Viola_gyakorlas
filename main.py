@@ -31,11 +31,20 @@ def keresem(lista):
     print(f"Az első kétjegyű szám a sorozatban a {lista[j]}, ami a {j + 1}. elem.")
 
 def prim(tomb):
-    #ezzel még csinálni kell valamit, mert most semmire se jó
     k = 0
     darab = 0
     while k < len(tomb)-1:
-        if tomb[k] :
+        if tomb[k] < 0:
+            vizsg = -1 * tomb[k]
+        else:
+            vizsg = tomb[k]
+        oszto = 2
+        prim_e = True
+        while oszto <= vizsg ** 0.5 and prim_e == True:
+            if vizsg % oszto == 0:
+                prim_e = False
+            oszto += 1
+        if prim_e == True:
             darab += 1
         k += 1
     print(f"Összesen {darab} prím szám van a sorozatomban.")
